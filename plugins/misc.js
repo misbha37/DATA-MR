@@ -75,7 +75,7 @@ cmd({
     pattern: "vv",
     react : "🦠",
     alias: ['retrive', "viewonce"],
-    desc: "Fetch and resend a ViewOnce message content (image/video).",
+    desc: "Fetch and resend a ViewOnce message content (image/video/voice).",
     category: "misc",
     use: '<query>',
     filename: __filename

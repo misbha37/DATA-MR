@@ -51,13 +51,10 @@ cmd({
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
         const startTime = Date.now()
-        const message = await conn.sendMessage(from, { text: '*❤     ❔❔❔❔❔❔
-👦     👩👩👩👸👸👸
-👕     👚👗👚👘👚👙
-*' })
+        const message = await conn.sendMessage(from, { text: '*PINGING...*' })
         const endTime = Date.now()
         const ping = endTime - startTime
-        await conn.sendMessage(from, { text: `*𝗕𝗢𝗧ˢᵖᵉᵉᵈ🚀 : ${ping}ms*` }, { quoted: message })
+        await conn.sendMessage(from, { text: `*SPEED : ${ping}ms*` }, { quoted: message })
     } catch (e) {
         console.log(e)
         reply(`${e}`)
