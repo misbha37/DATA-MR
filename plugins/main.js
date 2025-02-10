@@ -32,6 +32,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• mediafire <provide url>
 ┃◈┃• tiktok <provide url>
 ┃◈┃• twitter <provide url>
+┃◈┃• wiki <provide Name>
 ┃◈┃• Insta <provide url>
 ┃◈┃• apk <provide name> 
 ┃◈┃• img <provide name>
