@@ -1,38 +1,56 @@
-const axios = require('axios');
-const config = require('../config');
-const { cmd, commands } = require('../command');
+const axios = require("axios");
+const { cmd } = require("../command");
 
 cmd({
-    pattern: "githubstalk",
-    desc: "Fetch detailed GitHub user profile including profile picture.",
-    category: "menu",
-    react: "🖥️",
-    filename: __filename
-},
-async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
-    try {
-        const username = args[0];
-        if (!username) {
-            return reply("Please provide a GitHub username.");
-        }
-        const apiUrl = `https://api.github.com/users/${username}`;
-        const response = await axios.get(apiUrl);
-        const data = response.data;
-
-        let userInfo = `👤 *Username*: ${data.name || data.login}
-🔗 *Github Url*:(${data.html_url})
-📝 *Bio*: ${data.bio || 'Not available'}
-🏙️ *Location*: ${data.location || 'Unknown'}
-📊 *Public Repos*: ${data.public_repos}
-👥 *Followers*: ${data.followers} | Following: ${data.following}
-📅 *Created At*: ${new Date(data.created_at).toDateString()}
-🔭 *Public Gists*: ${data.public_gists}
-> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ Mʀ Sʜᴀʙᴀɴ`;
-          const sentMsg = await conn.sendMessage(from,{image:{url: data.avatar_url },caption: userInfo },{quoted:mek })
-    } catch (e) {
-        console.log(e);
-        reply(`error: ${e.response ? e.response.data.message : e.message}`);
+  pattern: "tiktokstalk",
+  alias: ["tstalk", "ttstalk"],
+  react: "📱",
+  desc: "Fetch TikTok user profile details.",
+  category: "search",
+  filename: __filename
+}, async (conn, m, store, { from, args, q, reply }) => {
+  try {
+    if (!q) {
+      return reply("❎ Please provide a TikTok username.\n\n*Example:* .tiktokstalk mrbeast");
     }
+
+    const apiUrl = `https://api.siputzx.my.id/api/stalk/tiktok?username=${encodeURIComponent(q)}`;
+    const { data } = await axios.get(apiUrl);
+
+    if (!data.status) {
+      return reply("❌ User not found. Please check the username and try again.");
+    }
+
+    const user = data.data.user;
+    const stats = data.data.stats;
+
+    const profileInfo = `🎭 *TikTok Profile Stalker* 🎭
+
+👤 *Username:* @${user.uniqueId}
+📛 *Nickname:* ${user.nickname}
+✅ *Verified:* ${user.verified ? "Yes ✅" : "No ❌"}
+📍 *Region:* ${user.region}
+📝 *Bio:* ${user.signature || "No bio available."}
+🔗 *Bio Link:* ${user.bioLink?.link || "No link available."}
+
+📊 *Statistics:*
+👥 *Followers:* ${stats.followerCount.toLocaleString()}
+👤 *Following:* ${stats.followingCount.toLocaleString()}
+❤️ *Likes:* ${stats.heartCount.toLocaleString()}
+🎥 *Videos:* ${stats.videoCount.toLocaleString()}
+
+📅 *Account Created:* ${new Date(user.createTime * 1000).toLocaleDateString()}
+🔒 *Private Account:* ${user.privateAccount ? "Yes 🔒" : "No 🌍"}
+
+🔗 *Profile URL:* https://www.tiktok.com/@${user.uniqueId}
+`;
+
+    const profileImage = { image: { url: user.avatarLarger }, caption: profileInfo };
+
+    await conn.sendMessage(from, profileImage, { quoted: m });
+  } catch (error) {
+    console.error("❌ Error in TikTok stalk command:", error);
+    reply("⚠️ An error occurred while fetching TikTok profile data.");
+  }
 });
 
-// Mʀ Sʜᴀʙᴀɴ 
