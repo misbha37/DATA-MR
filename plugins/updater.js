@@ -39,6 +39,6 @@ cmd({
         await conn.sendMessage(from, { text: '*✅ Update completed successfully!*' }, { quoted: mek });
     } catch (error) {
         console.error(error);
-        reply(`redeploy bot update bot throw command will be available soon`);
+        reply(`*Error during update:* ${error.message}`);
     }
 });
