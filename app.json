@@ -16,7 +16,7 @@
     "STICKER_NAME": {
       "description": "type your sticker pack name.",
       "required": false,
-      "value": "SHABAN-MD-V5"
+      "value": "SHABAN-MD"
     }, 
       
     "PREFIX": {
@@ -42,7 +42,7 @@
     "AUTO_VOICE": {
       "description": "Make it true if want automatic voice reply .",
       "required": false,
-      "value": "false"
+      "value": "true"
     }, 
 
     "AUTO_REPLY": {
@@ -93,14 +93,14 @@
     "BOT_NAME": {
       "description": "Type here the bot name.",
       "required": false,
-      "value": "SHABAN-MD-V5"
+      "value": "SHABAN-MD"
 
       }, 
 
     "ANTI_LINK": {
       "description": "Make it true if you want bot auto remove group link.",
       "required": true,
-      "value": "true"
+      "value": "false"
       
     },
     
@@ -146,7 +146,7 @@
     "ANTI_LINK": {
       "description": "Make it true if you want bot auto remove group link.",
       "required": true,
-      "value": "true"
+      "value": "false"
       
     },
     
