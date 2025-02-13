@@ -31,7 +31,7 @@ cmd({
     const formData = new FormData();
     formData.append("image", fs.createReadStream(tempFilePath));
 
-    const { data } = await axios.post("https://api.imgbb.com/1/upload?key=e909ac2cc8d50250c08f176afef0e333", formData, {
+    const { data } = await axios.post("https://api.imgbb.com/1/upload?key=64e74dffad0f2c9698e6a3a297d4fad7", formData, {
       headers: formData.getHeaders(),
     });
 
