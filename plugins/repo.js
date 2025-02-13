@@ -40,7 +40,7 @@ https://github.com/MRSHABAN40/SHABAN-MD-V5`;
 
         // Send audio with contextInfo
         await conn.sendMessage(from, {
-            audio: { url: 'https://github.com/JawadYTX/KHAN-DATA/raw/refs/heads/main/autovoice/repo.m4a' },
+            audio: { url: 'https://github.com/MRSHABAN40/SHABAN-MD_DATABASE/raw/refs/heads/main/autovoice/repo.mp3' },
             mimetype: 'audio/mp4',
             ptt: true,
             contextInfo: { 
