@@ -16,50 +16,46 @@ cmd({
 }, async (conn, m, store, { from, quoted, reply, sender }) => {
   try {
     const targetMsg = quoted ? quoted : m;
-    const mimeType = (targetMsg.msg || targetMsg).mimetype || "";
-
-    if (!mimeType || !mimeType.startsWith("image")) {
+    if (!targetMsg || !targetMsg.mimetype) {
       return reply("❌ Please reply to an image.");
+    }
+
+    if (!targetMsg.mimetype.startsWith("image/")) {
+      return reply("❌ Please reply to a valid image.");
     }
 
     reply("🔄 Uploading image...");
 
     const imageBuffer = await targetMsg.download();
+    if (!imageBuffer) {
+      return reply("❌ Failed to download the image.");
+    }
+
     const tempFilePath = path.join(os.tmpdir(), "temp_image.jpg");
     fs.writeFileSync(tempFilePath, imageBuffer);
 
     const formData = new FormData();
     formData.append("image", fs.createReadStream(tempFilePath));
 
-    const { data } = await axios.post("https://api.imgbb.com/1/upload?key=f07b8d2d9f0593bc853369f251a839de", formData, {
-      headers: formData.getHeaders(),
-    });
+    const { data } = await axios.post(
+      "https://api.imgbb.com/1/upload?key=f07b8d2d9f0593bc853369f251a839de",
+      formData,
+      { headers: formData.getHeaders() }
+    );
 
     fs.unlinkSync(tempFilePath); // Delete temp file
 
     if (!data || !data.data || !data.data.url) {
-      throw "❌ Failed to upload the image.";
+      return reply("❌ Failed to upload the image.");
     }
 
     const imageUrl = data.data.url;
-    const msgContext = {
-      mentionedJid: [sender],
-      forwardingScore: 999,
-      isForwarded: true,
-      forwardedNewsletterMessageInfo: {
-        newsletterJid: "120363358310754973@newsletter",
-        newsletterName: "MR-SHABAN",
-        serverMessageId: 143
-      }
-    };
-
     await conn.sendMessage(from, {
-      text: `✅ *Image Uploaded Successfully 📸*\n📏 *Size:* ${imageBuffer.length} Bytes\n🔗 *URL:* ${imageUrl}\n\n> ⚖️ *Uploaded via SHABAN-MD*`,
-      contextInfo: msgContext
+      text: `✅ *Image Uploaded Successfully 📸*\n📏 *Size:* ${imageBuffer.length} Bytes\n🔗 *URL:* ${imageUrl}\n\n> ⚖️ *Uploaded via SHABAN-MD*`
     });
 
   } catch (error) {
-    reply("❌ Error: " + error.message);
     console.error("Upload Error:", error);
+    reply("❌ Error: " + (error.message || error));
   }
 });
