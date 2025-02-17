@@ -1,6 +1,6 @@
 {
   "name": "SHABAN-MD",
-  "description": "Javascript WhatsApp bot made by MR SHABAN",
+  "description": "Javascript WhatsApp bot ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍʀ sʜᴀʙᴀɴ",
   "logo": "https://i.ibb.co/Qj6b2hjS/shaban-md.jpg",
   "keywords": ["SHABAN-MD"],
   "success_url": "/",
@@ -15,19 +15,19 @@
     
     "STICKER_NAME": {
       "description": "type your sticker pack name.",
-      "required": false,
+      "required": true,
       "value": "SHABAN-MD"
     }, 
       
     "PREFIX": {
       "description": "paste your bot prefix note! Don't apply null prefix.",
-      "required": false,
+      "required": true,
       "value": "."
     },
     
     "MODE": {
       "description": "select your bot work type public-private-inbox-group.",
-      "required": false,
+      "required": true,
       "value": "public"
       
     },
@@ -53,7 +53,7 @@
 
     "AUTO_STICKER": {
       "description": "Make it true if you want automatic sticker.",
-      "required": false,
+      "required": true,
       "value": "false"
     }, 
 
@@ -85,7 +85,7 @@
     
     "OWNER_NAME": {
       "description": "Type Bot Owner Name.",
-      "required": false,
+      "required": true,
       "value": "MR SHABAN"
 }, 
 
@@ -98,7 +98,7 @@
 
     "BOT_NAME": {
       "description": "Type here the bot name.",
-      "required": false,
+      "required": true,
       "value": "SHABAN-MD"
 
       }, 
@@ -119,7 +119,7 @@
      "DESCRIPTION": {
       "description": "add caption for menu and other",
       "required": false,
-      "value": "*© MR SHABAN*"
+      "value": "*ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍʀ sʜᴀʙᴀɴ*"
     },
 
       "DELETE_LINKS": {
@@ -155,13 +155,13 @@
     
     "CUSTOM_REACT_EMOJIS": {
       "description": "put here custom react react emojis.",
-      "required": false,
+      "required": true,
       "value": "💝,💖,💗,❤️‍🩹,❤️,🧡,💛,💚,💙,💜,🤎,🖤,🤍"
     }, 
     
     "ANTI_DEL_PATH": {
       "description": "change it to -same- if you want to resend deleted message in same chat",
-      "required": false,
+      "required": true,
       "value": "same"
     }, 
 
