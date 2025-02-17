@@ -104,6 +104,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• play
 ┃◈┃• play2
 ┃◈┃• play5
+┃◈┃• audio3
 ┃◈┃• video2
 ┃◈┃• yts
 ┃◈┃• git
