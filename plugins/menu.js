@@ -39,8 +39,6 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• allmenu
 ┃◈┃• ownermenu
 ┃◈┃• othermenu
-┃◈┃• logo <text>
-┃◈┃• repo
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
 > ${config.DESCRIPTION}`;
@@ -174,6 +172,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• hidetag
 ┃◈┃• tagall
 ┃◈┃• tagadmins
+┃◈┃• gjid
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
 > ${config.DESCRIPTION}`;
@@ -269,9 +268,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
     try {
         let dec = `╭━━〔 *𝐎𝐓𝐇𝐄𝐑 𝐌𝐄𝐍𝐔* 〕━━┈⊷
 ┃◈╭─────────────·๏
-┃◈┃• vv
 ┃◈┃• fact
-┃◈┃• fancy
 ┃◈┃• define
 ┃◈┃• news
 ┃◈┃• movie
@@ -380,8 +377,6 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• restart
 ┃◈┃• shutdown
 ┃◈┃• updatecmd 
-┃◈┃• gjid
-┃◈┃• jid
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
 > ${config.DESCRIPTION}`;
@@ -427,7 +422,11 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┃◈┃• sticker 
 ┃◈┃• fancy  
 ┃◈┃• tts 
+┃◈┃• tts2
+┃◈┃• tts3
 ┃◈┃• trt
+┃◈┃• url
+┃◈┃• logo
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
 > ${config.DESCRIPTION}`;
